@@ -12,6 +12,9 @@ import { SuperTabsModule } from '@ionic-super-tabs/angular';
 import { ControllerPageModule } from '../controller/controller.module';
 import { DataPageModule } from '../data/data.module';
 import { GraphsPageModule } from '../graphs/graphs.module';
+import { GraphsPage } from '../graphs/graphs.page';
+import { DataPage } from '../data/data.page';
+import { ControllerPage } from '../controller/controller.page';
 
 @NgModule({
   imports: [
@@ -24,6 +27,7 @@ import { GraphsPageModule } from '../graphs/graphs.module';
     DataPageModule,
     GraphsPageModule
   ],
-  declarations: [TabsPage]
+  declarations: [TabsPage],
+  entryComponents:[GraphsPage, DataPage, ControllerPage]
 })
 export class TabsPageModule {}

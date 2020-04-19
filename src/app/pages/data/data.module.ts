@@ -4,16 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DataPageRoutingModule } from './data-routing.module';
-
 import { DataPage } from './data.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
-    DataPageRoutingModule
+    IonicModule
   ],
   declarations: [DataPage]
 })
