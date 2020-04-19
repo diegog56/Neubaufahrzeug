@@ -1,0 +1,39 @@
+// ion-fab-button {
+//     width: 100px !important;
+//     height: 100px !important;
+    
+// }    
+ion-fab-list ion-button{
+    --border-radius:125px;
+    --padding-top:65px;
+    --padding-bottom:65px;
+}
+.parent {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.son1 {
+    position: relative;
+    top: -95px;
+    left: -40px;
+}
+
+.son2 {
+    position: relative;
+    top: 20px;
+    left: -40px;
+}
+
+.son3 {
+    position: relative;
+    top: -40px;
+    left: 8px;
+}
+
+.son4 {
+    position: relative;
+    top: -40px;
+    left: -8px;
+}
+
