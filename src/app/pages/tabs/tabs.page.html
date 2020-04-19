@@ -1,0 +1,26 @@
+<super-tabs>
+  <super-tabs-toolbar class="super-tabs" slot="bottom">
+    <super-tab-button>
+      <ion-icon name="today"></ion-icon>
+    </super-tab-button>
+
+    <super-tab-button disabled>
+      <ion-icon name="list" color="red"></ion-icon>
+    </super-tab-button>
+
+    <super-tab-button disabled>
+      <ion-icon name="calendar"></ion-icon>
+    </super-tab-button>
+  </super-tabs-toolbar>
+  <super-tabs-container class="tabs-container">
+    <super-tab>
+      <ion-nav [root]="controller"></ion-nav>
+    </super-tab>
+    <super-tab>
+      <ion-nav [root]="data"></ion-nav>
+    </super-tab>
+    <super-tab>
+      <ion-nav [root]="graphs"></ion-nav>
+    </super-tab>
+  </super-tabs-container>
+</super-tabs>
