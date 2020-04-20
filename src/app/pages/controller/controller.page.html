@@ -5,21 +5,39 @@
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-row color="primary" class="ion-justify-content-center">
+      <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+        <div class="ion-text-center">
+          <h3>Modo Actual</h3>
+          <ion-chip onmousedown="audio.play()" color="{{color}}" outline="true">
+            <i class="{{left_icon}}"></i>
+            <ion-label>&nbsp;{{mode}}&nbsp;</ion-label>
+            <i class="{{right_icon}}"></i>
+          </ion-chip>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <ion-fab horizontal="center" vertical="center" slot="fixed">
     <ion-fab-button class="parent" color="dark">
       <ion-icon name="game-controller"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-button class="son1" ion-fab color="orange" expand="block" size="large"><i class="fas fa-level-down-alt"></i>&nbsp;Derribar&nbsp;<i class="fab fa-jedi-order"></i></ion-button>
+      <ion-button onmousedown="derribar.play()" class="son1" ion-fab color="orange" expand="block" size="medium" (click)="accion('1')"><i
+          class="fas fa-level-down-alt"></i>&nbsp;Derribar&nbsp;<i class="fab fa-jedi-order"></i></ion-button>
     </ion-fab-list>
     <ion-fab-list side="end">
-      <ion-button class="son4" ion-fab color="light" expand="block" size="large"><i class="fas fa-hand-paper"></i>&nbsp;Detener&nbsp;<i class="fas fa-biohazard"></i></ion-button>
+      <ion-button onmousedown="stop.play()" class="son4" ion-fab color="light" expand="block" size="medium" (click)="accion('2')"><i
+          class="fas fa-hand-paper"></i>&nbsp;Detener&nbsp;<i class="fas fa-biohazard"></i></ion-button>
     </ion-fab-list>
     <ion-fab-list side="bottom">
-      <ion-button class="son2" ion-fab color="yellow" expand="block" size="large">&nbsp;<i class="fas fa-route"></i>&nbsp;Evitar&nbsp;<i class="fas fa-tachometer-alt"></i>&nbsp;</ion-button>
+      <ion-button onmousedown="avoid.play()" class="son2" ion-fab color="yellow" expand="block" size="medium" (click)="accion('3')">&nbsp;<i
+          class="fas fa-route"></i>&nbsp;Evitar&nbsp;<i class="fas fa-tachometer-alt"></i>&nbsp;</ion-button>
     </ion-fab-list>
     <ion-fab-list side="start">
-      <ion-button class="son3" ion-fab color="red" expand="block" size="large">&nbsp;<i class="fas fa-radiation"></i>&nbsp;Atacar&nbsp;<i class="fas fa-skull-crossbones"></i>&nbsp;</ion-button>
+      <ion-button onmousedown="attack.play()" class="son3" ion-fab color="red" expand="block" size="medium" (click)="accion('4')">&nbsp;<i
+          class="fas fa-radiation"></i>&nbsp;Atacar&nbsp;<i class="fas fa-skull-crossbones"></i>&nbsp;</ion-button>
     </ion-fab-list>
   </ion-fab>
 </ion-content>
