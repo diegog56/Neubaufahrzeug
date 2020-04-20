@@ -1,9 +1,46 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>data</ion-title>
+    <ion-title>Datos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-row><br></ion-row>
+  <ion-row class="ion-justify-content-center">
+    <ion-col class="header-col" size="2">
+      <!-- tappable -->
+      <p>Velocidad</p>
+    </ion-col>
+    <ion-col class="header-col" size="2">
+      <p>Distancia</p>
+    </ion-col>
+    <ion-col class="header-col" size="2">
+      <p>Tiempo</p>
+    </ion-col>
+    <ion-col class="header-col" size="2">
+      <p>Objetos Evadidos</p>
+    </ion-col>
+    <ion-col class="header-col" size="2">
+      <p>Tiempo Decisión</p>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngFor="let bit of binnacle" class="data-row ion-justify-content-center">
+    <ion-col class="data-col" size="2">
+      {{bit.speed}}
+    </ion-col>
+    <ion-col class="data-col" size="2">
+      {{bit.distance}}
+    </ion-col>
+    <ion-col class="data-col" size="2">
+      {{bit.total_time}}
+    </ion-col>
+    <ion-col class="data-col" size="2">
+      {{bit.evaded_objects}}
+    </ion-col>
+    <ion-col class="data-col" size="2">
+      <!-- <p>{{bit.decision_time}}</p> -->
+      {{bit.decision_time}}
+    </ion-col>
+  </ion-row>
+  <ion-row><br></ion-row>
 </ion-content>

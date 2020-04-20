@@ -1,5 +1,7 @@
 {
   "name": "Neubaufahrzeug",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
