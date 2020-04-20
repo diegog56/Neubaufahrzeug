@@ -6,25 +6,51 @@
 
 <ion-content>
   <ion-row><br></ion-row>
+  <ion-grid>
+    <ion-row color="primary" class="ion-justify-content-center">
+      <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+        <div class="ion-text-center">
+          <h3>Bitácora Neubaufahrzeug</h3>
+          <ion-chip  onmousedown="audio.play()" color="dark" outline="true">
+            <ion-label>&nbsp;<ion-icon name="arrow-down"></ion-icon>&nbsp;Prueba ordenar los datos&nbsp;<ion-icon name="arrow-up"></ion-icon>&nbsp;</ion-label>
+          </ion-chip>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-row><br></ion-row>
   <ion-row class="ion-justify-content-center">
-    <ion-col class="header-col" size="2">
+    <ion-col class="header-col" size="2" tappable (click)="sortBy('date')">
       <!-- tappable -->
-      <p>Velocidad</p>
+      <p>Fecha&nbsp;<ion-icon name="arrow-down" *ngIf="sortdirection==1 && sortkey=='date'"></ion-icon>
+        <ion-icon name="arrow-up" *ngIf="sortdirection==2 && sortkey=='date'"></ion-icon></p>
     </ion-col>
-    <ion-col class="header-col" size="2">
-      <p>Distancia</p>
+    <ion-col class="header-col" size="2" tappable (click)="sortBy('speed')">
+      <!-- tappable -->
+      <p>Velocidad&nbsp;<ion-icon name="arrow-down" *ngIf="sortdirection==1 && sortkey=='speed'"></ion-icon>
+        <ion-icon name="arrow-up" *ngIf="sortdirection==2 && sortkey=='speed'"></ion-icon></p>
     </ion-col>
-    <ion-col class="header-col" size="2">
-      <p>Tiempo</p>
+    <ion-col class="header-col" size="2" tappable (click)="sortBy('distance')">
+      <p>Distancia&nbsp;<ion-icon name="arrow-down" *ngIf="sortdirection==1 && sortkey=='distance'"></ion-icon>
+        <ion-icon name="arrow-up" *ngIf="sortdirection==2 && sortkey=='distance'"></ion-icon></p>
     </ion-col>
-    <ion-col class="header-col" size="2">
-      <p>Objetos Evadidos</p>
+    <ion-col class="header-col" size="2" tappable (click)="sortBy('total_time')">
+      <p>Tiempo&nbsp;<ion-icon name="arrow-down" *ngIf="sortdirection==1 && sortkey=='total_time'"></ion-icon>
+        <ion-icon name="arrow-up" *ngIf="sortdirection==2 && sortkey=='total_time'"></ion-icon></p>
     </ion-col>
-    <ion-col class="header-col" size="2">
-      <p>Tiempo Decisión</p>
+    <ion-col class="header-col" size="2" tappable (click)="sortBy('evaded_objects')">
+      <p>Objetos Evadidos&nbsp;<ion-icon name="arrow-down" *ngIf="sortdirection==1 && sortkey=='evaded_objects'"></ion-icon>
+        <ion-icon name="arrow-up" *ngIf="sortdirection==2 && sortkey=='evaded_objects'"></ion-icon></p>
+    </ion-col>
+    <ion-col class="header-col" size="2" tappable (click)="sortBy('decision_time')">
+      <p>Tiempo Decisión&nbsp;<ion-icon name="arrow-down" *ngIf="sortdirection==1 && sortkey=='decision_time'"></ion-icon>
+        <ion-icon name="arrow-up" *ngIf="sortdirection==2 && sortkey=='decision_time'"></ion-icon></p>
     </ion-col>
   </ion-row>
   <ion-row *ngFor="let bit of binnacle" class="data-row ion-justify-content-center">
+    <ion-col class="data-col" size="2">
+      <p>{{bit.date}}</p>
+    </ion-col>
     <ion-col class="data-col" size="2">
       {{bit.speed}}
     </ion-col>
