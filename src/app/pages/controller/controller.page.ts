@@ -38,10 +38,10 @@ export class ControllerPage implements OnInit {
         this.color="yellow";
         break;
       case "4":
-        this.left_icon="fas fa-radiation";
-        this.right_icon="fas fa-skull-crossbones";
-        this.mode="Atacar";
-        this.color="red";
+        // this.left_icon="fas fa-radiation";
+        // this.right_icon="fas fa-skull-crossbones";
+        // this.mode="Atacar";
+        // this.color="red";
         break;
     }
   }
