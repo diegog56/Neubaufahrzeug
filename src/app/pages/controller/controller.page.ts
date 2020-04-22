@@ -1,11 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { webSocket } from 'rxjs/webSocket';
 
 @Component({
   selector: 'app-controller',
   templateUrl: './controller.page.html',
   styleUrls: ['./controller.page.scss'],
 })
-export class ControllerPage implements OnInit {
+export class ControllerPage implements OnInit, OnDestroy {
+
+  url = 'ws://68.183.30.44:3001/';
+  socket = webSocket(this.url);
+
   color="orange";
   mode="Derribar";
   left_icon="fas fa-level-down-alt";
@@ -14,10 +19,16 @@ export class ControllerPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.socket.subscribe();
+  }
+
+  ngOnDestroy(){
+    this.socket.complete();
   }
 
   accion(a){
     console.log(a);
+    this.socket.next(+a);
     switch(a){
       case "1":
         this.color="orange";
@@ -36,12 +47,6 @@ export class ControllerPage implements OnInit {
         this.right_icon="fas fa-tachometer-alt";
         this.mode="Evitar";
         this.color="yellow";
-        break;
-      case "4":
-        // this.left_icon="fas fa-radiation";
-        // this.right_icon="fas fa-skull-crossbones";
-        // this.mode="Atacar";
-        // this.color="red";
         break;
     }
   }

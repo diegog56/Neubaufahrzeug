@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-data',
@@ -13,10 +14,11 @@ export class DataPage implements OnInit {
   binnacle = [
   ];
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   ngOnInit() {
     this.mixItAll();
+    this.getData();
     console.log(this.binnacle);
   }
 
@@ -74,6 +76,13 @@ export class DataPage implements OnInit {
       return "0" + n;
     }
     return n;
+  }
+
+  getData(){
+    this.http.get('http://68.183.30.44:3001/api/Log').subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    );
   }
 
 }
