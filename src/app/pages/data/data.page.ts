@@ -11,13 +11,13 @@ export class DataPage implements OnInit {
   sortdirection = 0;
   sortkey = null;
 
-  binnacle = [
+  binnacle:any = [
   ];
 
   constructor(private http:HttpClient) { }
 
   ngOnInit() {
-    this.mixItAll();
+    // this.mixItAll();
     this.getData();
     console.log(this.binnacle);
   }
@@ -42,8 +42,8 @@ export class DataPage implements OnInit {
       this.sortdirection = 0;
       this.sortkey = null;
       this.binnacle.sort((a, b) => {
-        const valA = a['index'];
-        const valB = b['index'];
+        const valA = a['_id'];
+        const valB = b['_id'];
         return valA<valB ? -1 : valA>valB ? 1 : 0;
       });
     }
@@ -80,7 +80,7 @@ export class DataPage implements OnInit {
 
   getData(){
     this.http.get('http://68.183.30.44:3001/api/Log').subscribe(
-      res => console.log(res),
+      res => this.binnacle=res,
       err => console.log(err)
     );
   }
