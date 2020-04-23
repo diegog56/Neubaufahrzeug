@@ -1,0 +1,25 @@
+ion-toolbar {
+    --background: black;
+    color: white;
+  }
+  ion-icon{
+    color:white;
+  }
+  ion-content{
+    --ion-background-color: transparent !important;
+    --ion-border-color: transparent !important;
+  }
+  .verticalScrollContainer {
+    background: black;
+  }
+  .tabs-container{
+    background-color: black;
+  }
+  super-tabs{
+    --st-base-color-active:wheat;
+    --st-base-color-inactive:white;
+  }
+  super-tabs-toolbar{
+    --st-indicator-color:black;
+    --super-tabs-toolbar-background:black;
+  }
