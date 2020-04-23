@@ -1,8 +1,8 @@
 {
   "name": "Neubaufahrzeug",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "version": "1.0.0",
+  "author": "Diego Gomez",
+  "homepage": "https://github.com/diegog56/Neubaufahrzeug",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -59,7 +59,7 @@
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
   },
-  "description": "An Ionic project",
+  "description": "usac Tank 2099",
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
