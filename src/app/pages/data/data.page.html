@@ -42,7 +42,7 @@
         <ion-icon name="arrow-up" *ngIf="sortdirection==2 && sortkey=='total_time'"></ion-icon></p>
     </ion-col>
     <ion-col class="header-col" size="2" tappable (click)="sortBy('evaded_objects')">
-      <p>Objetos Evadidos&nbsp;<ion-icon name="arrow-down" *ngIf="sortdirection==1 && sortkey=='evaded_objects'"></ion-icon>
+      <p>Objetos Evadidos,<br>Derribados,<br>Totales&nbsp;<ion-icon name="arrow-down" *ngIf="sortdirection==1 && sortkey=='evaded_objects'"></ion-icon>
         <ion-icon name="arrow-up" *ngIf="sortdirection==2 && sortkey=='evaded_objects'"></ion-icon></p>
     </ion-col>
     <ion-col class="header-col" size="2" tappable (click)="sortBy('decision_time')">
@@ -55,20 +55,20 @@
       <p>{{bit.date}}</p>
     </ion-col>
     <ion-col class="data-col" size="2">
-      {{bit.speed}}
+      <p>{{bit.speed}}</p>
     </ion-col>
     <ion-col class="data-col" size="2">
-      {{bit.distance}}
+      <p>{{bit.distance}}</p>
     </ion-col>
     <ion-col class="data-col" size="2">
-      {{bit.total_time}}
+      <p>{{bit.total_time}}</p>
     </ion-col>
     <ion-col class="data-col" size="2">
-      {{bit.evaded_objects}}
+      <p>{{bit.evaded_objects}}/{{bit.knockeddown_objects}}/{{bit.knockeddown_objects+bit.evaded_objects}}</p>
     </ion-col>
     <ion-col class="data-col" size="2">
       <!-- <p>{{bit.decision_time}}</p> -->
-      {{bit.decision_time}}
+      <p>{{bit.decision_time}}</p>
     </ion-col>
   </ion-row>
   <ion-row><br></ion-row>

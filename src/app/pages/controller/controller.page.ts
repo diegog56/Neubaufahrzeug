@@ -11,10 +11,10 @@ export class ControllerPage implements OnInit, OnDestroy {
   url = 'ws://68.183.30.44:3001/';
   socket = webSocket(this.url);
 
-  color="orange";
-  mode="Derribar";
-  left_icon="fas fa-level-down-alt";
-  right_icon="fab fa-jedi-order";
+  color = "success";
+  mode = "Presione iniciar";
+  left_icon = "fas fa-eye";
+  right_icon = "fas fa-eye";
 
   constructor() { }
 
@@ -30,6 +30,12 @@ export class ControllerPage implements OnInit, OnDestroy {
     console.log(a);
     this.socket.next(+a);
     switch(a){
+      case "0":
+        this.mode = "Eliga un modo";
+        this.color = "success";
+        this.left_icon = "fas fa-eye";
+        this.right_icon = "fas fa-eye";
+        break;
       case "1":
         this.color="orange";
         this.mode="Derribar";
