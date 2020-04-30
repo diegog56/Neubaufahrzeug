@@ -30,7 +30,7 @@ export class ControllerPage implements OnInit, OnDestroy {
     console.log(a);
     this.socket.next(+a);
     switch(a){
-      case "0":
+      case "5":
         this.mode = "Eliga un modo";
         this.color = "success";
         this.left_icon = "fas fa-eye";
