@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Relaciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list-header color="light">Simple Bar Chart</ion-list-header>
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-subtitle>{{subtitle}}</ion-card-subtitle>
+      <ion-card-title>
+        {{title}}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      
+      <div class="wrapper">
+      <svg #svg></svg>
+        <div *ngIf="loading" class="loader">Loading</div>
+      </div>
+      <p>Tiempo vs Tiempo Decision</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
