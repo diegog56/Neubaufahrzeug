@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list-header color="light">Simple Bar Chart</ion-list-header>
+  <ion-list-header color="light">Relaciones de la bitácora</ion-list-header>
   <ion-card class="welcome-card">
     <ion-card-header>
       <ion-card-subtitle>{{subtitle}}</ion-card-subtitle>
@@ -19,7 +19,40 @@
       <svg #svg></svg>
         <div *ngIf="loading" class="loader">Loading</div>
       </div>
-      <p>Tiempo vs Tiempo Decision</p>
     </ion-card-content>
   </ion-card>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        Datos
+      </ion-label>
+    </ion-list-header>
+  
+    <ion-item>
+      <ion-label>Eje X</ion-label>
+      <ion-select value="speed" okText="OK" cancelText="Cancelar" [(ngModel)]="xAxisProp" (ionChange)="updateChart()">
+        <ion-select-option value="speed">Velocidad</ion-select-option>
+        <ion-select-option value="distance">Distancia</ion-select-option>
+        <ion-select-option value="total_time">Tiempo</ion-select-option>
+        <ion-select-option value="evaded_objects">Objetos Evadidos</ion-select-option>
+        <ion-select-option value="knockeddown_objects">Objetos Derribados</ion-select-option>
+        <ion-select-option value="objects">Objetos</ion-select-option>
+        <ion-select-option value="decision_time">Tiempo de Decision</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Eje Y</ion-label>
+      <ion-select value="speed" okText="OK" cancelText="Cancelar" [(ngModel)]="yAxisProp" (ionChange)="updateChart()">
+        <ion-select-option value="speed">Velocidad</ion-select-option>
+        <ion-select-option value="distance">Distancia</ion-select-option>
+        <ion-select-option value="total_time">Tiempo</ion-select-option>
+        <ion-select-option value="evaded_objects">Objetos Evadidos</ion-select-option>
+        <ion-select-option value="knockeddown_objects">Objetos Derribados</ion-select-option>
+        <ion-select-option value="objects">Objetos</ion-select-option>
+        <ion-select-option value="decision_time">Tiempo de Decision</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+  </ion-list>
 </ion-content>
