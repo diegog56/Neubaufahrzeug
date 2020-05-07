@@ -17,6 +17,7 @@ export class RelationsPage implements OnInit {
   subtitle = "Puedes seleccionar otra relación";
   xAxisProp = 'speed';
   yAxisProp = 'speed';
+  ruta = "0";
   api_data: any = [];
   constructor(@Host() private host: ElementRef<HTMLElement>, private devhttp: HttpClient) { }
 
@@ -24,11 +25,19 @@ export class RelationsPage implements OnInit {
     this.getData();
   }
 
+  rutas: any = [];
+
   getData() {
     this.devhttp.get('http://68.183.30.44:3001/api/Log').subscribe(
       res => {
         this.api_data = res;
         this.setData(this.xAxisProp, this.yAxisProp);
+      },
+      err => console.log(err)
+    )
+    this.devhttp.get('http://68.183.30.44:3001/api/new').subscribe(
+      res => {
+        this.rutas = res;
       },
       err => console.log(err)
     )
@@ -90,18 +99,21 @@ export class RelationsPage implements OnInit {
     for (let d of this.api_data) {
       let x;
       let y;
-      if (xAxis != "objects") x = d[xAxis];
-      else x = d['evaded_objects'] + d['knockeddown_objects'];
-      if (yAxis != "objects") y = d[yAxis];
-      else y = d['evaded_objects'] + d['knockeddown_objects'];
-      let newdata = { data: x, y: y };
-      this.data.push(newdata);
+      if (this.ruta=="0" || this.ruta==d['ruta']) {
+        if (xAxis != "objects") x = d[xAxis];
+        else x = d['evaded_objects'] + d['knockeddown_objects'];
+        if (yAxis != "objects") y = d[yAxis];
+        else y = d['evaded_objects'] + d['knockeddown_objects'];
+        let newdata = { data: x, y: y };
+        this.data.push(newdata);
+      }
     }
     this.data.sort((a, b) => {
       const valA = a['data'];
       const valB = b['data'];
       return valA > valB ? -1 : valA < valB ? 1 : 0;
     });
+    console.log(this.data);
     this.loadChart();
   }
 
