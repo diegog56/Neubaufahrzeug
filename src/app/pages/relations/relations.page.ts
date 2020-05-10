@@ -181,7 +181,7 @@ export class RelationsPage implements OnInit {
       .attr('transform', `translate(${margin}, ${margin})`)
       .call(d3.axisLeft(yScale).ticks(Math.min(Math.floor(chartHeight / 15), maxValue)));
 
-    const colors = ['steelblue', 'orange'];
+    const colors = ['steelblue', 'red'];
 
     data.forEach((serie, i) => {
       svg
