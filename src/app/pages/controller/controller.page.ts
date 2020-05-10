@@ -54,6 +54,12 @@ export class ControllerPage implements OnInit, OnDestroy {
         this.mode="Evitar";
         this.color="yellow";
         break;
+      case "7":
+          this.left_icon="fas fa-route";
+          this.right_icon="fas fa-tachometer-alt";
+          this.mode="Carrera";
+          this.color="yellow";
+          break;
     }
   }
 

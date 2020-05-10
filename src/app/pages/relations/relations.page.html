@@ -6,6 +6,13 @@
 
 <ion-content>
   <ion-list-header color="light">Relaciones de la bitácora</ion-list-header>
+  <ion-item>
+    <ion-label>Ruta</ion-label>
+    <ion-select value="0" okText="OK" cancelText="Cancelar" value="0" [(ngModel)]="ruta" (ionChange)="updateChart()">
+      <ion-select-option value="0">Todas</ion-select-option>
+      <ion-select-option *ngFor="let r of rutas; let i = index" value="{{r._id}}">Ruta {{i+1}}</ion-select-option>
+    </ion-select>
+  </ion-item>
   <ion-card class="welcome-card">
     <ion-card-header>
       <ion-card-subtitle>{{subtitle}}</ion-card-subtitle>
