@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mapa de Recorrido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll="true">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+        <div class="ion-text-center">
+          <rg-gauge-chart
+          [canvasWidth]="canvasWidth"
+          [needleValue]="needleValue"
+          [centralLabel]="centralLabel"
+          [options]="options"
+          [name]="name"
+          [bottomLabel]="bottomLabel"></rg-gauge-chart>
+          <br>
+          <canvas #imageCanvas id="Recorrido">
+            {{chartRecorrido}}
+          </canvas>
+          <ion-button expand="full" (click)="saveImage()">Guardar</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list *ngIf="storedImages.length > 0">
+    <ion-list-header>
+      Historial
+    </ion-list-header>
+    <ion-item *ngFor="let obj of storedImages; let i=index">
+      <ion-card>
+        <ion-card-title>
+          <ion-label>
+            Ruta {{i}}
+          </ion-label>
+        </ion-card-title>
+        <ion-card-content>
+          <img [src]="obj.img">
+          <ion-button (click)="removeImageAtIndex(i)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>

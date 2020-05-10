@@ -11,14 +11,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { SuperTabsModule } from '@ionic-super-tabs/angular';
 import { HttpClientModule } from '@angular/common/http';
 
+import{ IonicStorageModule } from '@ionic/storage';
+import { File } from '@ionic-native/file/ngx';
+import { GaugeChartModule } from 'angular-gauge-chart';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,SuperTabsModule.forRoot(),HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,SuperTabsModule.forRoot(),HttpClientModule,IonicStorageModule.forRoot(),GaugeChartModule],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    File
   ],
   bootstrap: [AppComponent]
 })

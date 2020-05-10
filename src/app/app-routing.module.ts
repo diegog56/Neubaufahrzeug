@@ -8,7 +8,15 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+  },  {
+    path: 'relations',
+    loadChildren: () => import('./pages/relations/relations.module').then( m => m.RelationsPageModule)
+  },
+  {
+    path: 'map',
+    loadChildren: () => import('./pages/map/map.module').then( m => m.MapPageModule)
   }
+
 ];
 
 @NgModule({

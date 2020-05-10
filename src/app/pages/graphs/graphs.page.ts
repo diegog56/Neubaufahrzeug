@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-graphs',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GraphsPage implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
+  }
+
+  navigate(route){
+    this.router.navigateByUrl(route);
   }
 
 }

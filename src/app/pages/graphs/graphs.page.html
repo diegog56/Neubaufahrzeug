@@ -11,15 +11,24 @@
         <div class="ion-text-center">
           <h3>Gráficas Neubaufahrzeug</h3>
           <ion-chip onmousedown="audio.play()" color="dark" outline="true">
-            <ion-label>&nbsp;<ion-icon name="construct"></ion-icon>&nbsp;Gráficas en construcción&nbsp;<ion-icon name="build"></ion-icon>&nbsp;</ion-label>
+            <ion-label>&nbsp;<ion-icon name="stats-chart"></ion-icon>&nbsp;Seleccione una gráfica&nbsp;<ion-icon name="stats-chart"></ion-icon>&nbsp;</ion-label>
           </ion-chip>
         </div>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col class="ion-align-self-center">
-        <img src="../../../assets/construction.png">
-      </ion-col>
-    </ion-row>
+    <br>
+    <br>
+    <br>
+    <br>
   </ion-grid>
+  <ion-list lines="none">
+    <ion-item class="item-content">
+      <ion-icon slot="start" color="dark" name="bar-chart"></ion-icon>
+      <ion-label><ion-button expand="block" color="dark" (click)="navigate('/relations')">Relaciones</ion-button></ion-label>
+    </ion-item>
+    <ion-item class="item-content">
+      <ion-icon slot="start" color="dark" name="map"></ion-icon>
+      <ion-label><ion-button expand="block" color="dark" (click)="navigate('/map')">Mapa</ion-button></ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
