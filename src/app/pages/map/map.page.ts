@@ -112,7 +112,7 @@ export class MapPage implements OnInit {
     //set values x, y
     if (this.api_data.length != 0) {
       this.needleValue = (this.api_data[this.api_data.length - 1]['speed']) * 20;
-      this.bottomLabel = Math.ceil(this.needleValue / 20) + "";
+      this.bottomLabel = this.needleValue / 20 + "";
       if (this.needleValue < 33) this.options.needleColor = "green";
       else if (this.needleValue > 33 && this.needleValue < 66) this.options.needleColor = "yellow";
       else if (this.needleValue > 66) this.options.needleColor = "red";
@@ -124,7 +124,7 @@ export class MapPage implements OnInit {
       await this.getData();
       if (this.api_data.length != 0) {
         this.needleValue = (this.api_data[this.api_data.length - 1]['speed']) * 20;
-        this.bottomLabel = Math.ceil(this.needleValue / 20) + "";
+        this.bottomLabel = this.needleValue / 20 + "";
         if (this.needleValue < 33) this.options.needleColor = "green";
         else if (this.needleValue > 33 && this.needleValue < 66) this.options.needleColor = "yellow";
         else if (this.needleValue > 66) this.options.needleColor = "red";
