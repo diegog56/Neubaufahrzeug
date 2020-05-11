@@ -49,9 +49,11 @@ export class MapPage implements OnInit {
     )
   }
 
-  getData() {
-    this.devhttp.get('http://68.183.30.44:3001/api/Log').subscribe(
+  async getData() {
+    const promise = this.devhttp.get('http://68.183.30.44:3001/api/Log').toPromise();
+    await promise.then(
       res => {
+        // console.log(res);
         this.api_data = res;
         let temp = this.api_data;
         this.api_data = [];
@@ -60,24 +62,23 @@ export class MapPage implements OnInit {
             this.api_data.push(t);
           }
         }
+        // console.log(this.api_data);
         if (this.api_data.length == 0 && temp.length != 0) {
           this.saveImage();
           this.getLast();
         }
         // console.log(this.api_data);
-      },
-      err => console.log(err)
-    )
+      }).catch((err)=> console.log(err));
   }
 
   async getLast() {
-    await this.devhttp.get('http://68.183.30.44:3001/api/last').subscribe(
+    const promise = this.devhttp.get('http://68.183.30.44:3001/api/last').toPromise()
+    await promise.then(
       res => {
         this.ruta = res;
         if (this.ruta.length != 0) this.ruta = res[0]['_id'];
-      },
-      err => console.log(err)
-    )
+      }
+    ).catch((err) => console.log(err));
   }
 
   normalizeData() {
@@ -101,14 +102,14 @@ export class MapPage implements OnInit {
     }
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.dataD = [
       { x: 0, y: 0 }
     ];
-    this.getLast();
-    this.getData();
-    //set values x, y
+    await this.getLast();
+    await this.getData();
     this.normalizeData();
+    //set values x, y
     if (this.api_data.length != 0) {
       this.needleValue = (this.api_data[this.api_data.length - 1]['speed']) * 20;
       this.bottomLabel = Math.ceil(this.needleValue / 20) + "";
@@ -119,7 +120,8 @@ export class MapPage implements OnInit {
     setTimeout(() => {
       this.options.needleStartValue = this.needleValue;
     }, 1000);
-    this.interval = setInterval(() => {
+    this.interval = setInterval(async () => {
+      await this.getData();
       if (this.api_data.length != 0) {
         this.needleValue = (this.api_data[this.api_data.length - 1]['speed']) * 20;
         this.bottomLabel = Math.ceil(this.needleValue / 20) + "";
@@ -129,29 +131,23 @@ export class MapPage implements OnInit {
       }
       setTimeout(() => {
         this.options.needleStartValue = this.needleValue;
-      }, 1000);
+      }, 3000);
       //updateValues x, y
       this.dataD = [
         { x: 0, y: 0 }
       ];
-      this.getData();
       this.normalizeData();
       this.updateRecorrido();
-    }, 3000);
+    }, 10000);
     this.canvasElement = this.canvas.nativeElement;
     this.canvasElement.height = this.plt.height() - 400;
     this.graficarRecorrido();
-    this.graficarVelocidad();
   }
 
   ngOnDestroy() {
     if (this.interval) {
       clearInterval(this.interval);
     }
-  }
-
-  graficarVelocidad() {
-
   }
   dataD: any = [];
 
@@ -200,7 +196,6 @@ export class MapPage implements OnInit {
         maxY = this.dataD[i].y;
       }
     }
-
     this.chart.options = {
       type: 'scatter',
       animation: {
@@ -245,7 +240,7 @@ export class MapPage implements OnInit {
         }
       }
     }
-    this.chart.update();
+    this.chart.update(0);
   }
 
   graficarRecorrido() {
