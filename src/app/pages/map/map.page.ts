@@ -35,6 +35,7 @@ export class MapPage implements OnInit {
   }
   api_data: any = [];
   ruta;
+  rutanueva;
   @ViewChild('imageCanvas', { static: true }) canvas: any;
   canvasElement: any;
   storedImages = [];
@@ -58,7 +59,7 @@ export class MapPage implements OnInit {
         let temp = this.api_data;
         this.api_data = [];
         for (let t of temp) {
-          if (t['ruta'] == this.ruta) {
+          if (t['ruta'] == this.rutanueva) {
             this.api_data.push(t);
           }
         }
@@ -107,12 +108,13 @@ export class MapPage implements OnInit {
       { x: 0, y: 0 }
     ];
     await this.getLast();
+    this.rutanueva=this.ruta;
     await this.getData();
     this.normalizeData();
     //set values x, y
     if (this.api_data.length != 0) {
       this.needleValue = (this.api_data[this.api_data.length - 1]['speed']) * 20;
-      this.bottomLabel = this.needleValue / 20 + "";
+      this.bottomLabel = (this.needleValue / 20).toFixed(2) + "";
       if (this.needleValue < 33) this.options.needleColor = "green";
       else if (this.needleValue > 33 && this.needleValue < 66) this.options.needleColor = "yellow";
       else if (this.needleValue > 66) this.options.needleColor = "red";
@@ -121,7 +123,6 @@ export class MapPage implements OnInit {
       this.options.needleStartValue = this.needleValue;
     }, 1000);
     this.interval = setInterval(async () => {
-      await this.getData();
       if (this.api_data.length != 0) {
         this.needleValue = (this.api_data[this.api_data.length - 1]['speed']) * 20;
         this.bottomLabel = this.needleValue / 20 + "";
@@ -129,16 +130,22 @@ export class MapPage implements OnInit {
         else if (this.needleValue > 33 && this.needleValue < 66) this.options.needleColor = "yellow";
         else if (this.needleValue > 66) this.options.needleColor = "red";
       }
-      setTimeout(() => {
-        this.options.needleStartValue = this.needleValue;
-      }, 3000);
-      //updateValues x, y
       this.dataD = [
         { x: 0, y: 0 }
       ];
+      await this.getLast();
+      await this.getData();
       this.normalizeData();
+      //updateValues x, y
       this.updateRecorrido();
-    }, 10000);
+      setTimeout(() => {
+        this.options.needleStartValue = this.needleValue;
+      }, 1500);
+      if(this.rutanueva!=this.ruta){
+        this.saveImage();
+        this.rutanueva=this.ruta;
+      }
+    }, 3000);
     this.canvasElement = this.canvas.nativeElement;
     this.canvasElement.height = this.plt.height() - 400;
     this.graficarRecorrido();
@@ -152,6 +159,7 @@ export class MapPage implements OnInit {
   dataD: any = [];
 
   updateRecorrido() {
+    console.log(this.dataD);
     let pointBackgroundColors: any = [];
     let pointRadius: any = [];
     this.cantPas = this.count;
@@ -196,7 +204,7 @@ export class MapPage implements OnInit {
         maxY = this.dataD[i].y;
       }
     }
-    this.chart.options = {
+    this.chart = new Chart('Recorrido', {
       type: 'scatter',
       animation: {
         duration: 0
@@ -239,8 +247,7 @@ export class MapPage implements OnInit {
           }]
         }
       }
-    }
-    this.chart.update(0);
+    });
   }
 
   graficarRecorrido() {
