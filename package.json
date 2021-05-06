@@ -33,7 +33,7 @@
     "cordova-sqlite-storage": "^5.0.0",
     "core-js": "^2.5.4",
     "d3": "^5.16.0",
-    "highcharts": "^8.0.4",
+    "highcharts": "^9.0.0",
     "ionic-angular": "^3.9.10",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
